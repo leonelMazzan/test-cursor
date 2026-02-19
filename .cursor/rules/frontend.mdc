@@ -1,0 +1,76 @@
+---
+description: React frontend standards — TypeScript, Vite, Tailwind, Shadcn, React Compiler
+globs: src/**/*
+alwaysApply: false
+---
+
+# Frontend rules (React)
+
+This project is **frontend-only** (React). Follow these rules when editing or creating code under `src/`.
+
+## Stack
+
+- **React** + **TypeScript** + **Vite**. PNPM for package manager.
+- **React Compiler** (React 19 + babel-plugin-react-compiler): do **not** add `useMemo`, `useCallback`, or `React.memo` unless profiling shows a need.
+- **TailwindCSS** + **Shadcn/ui**: Tailwind for utilities; Shadcn for components (Button, Card, Dialog, etc.). Use Shadcn; if a component is missing, add with `pnpm dlx shadcn@latest add <component>`.
+- **Zustand** for global state; **TanStack React Query** for server state; Axios for HTTP with interceptors.
+- All code, comments, and docs in **English**.
+
+## Code quality
+
+- TypeScript everywhere; avoid `any` (or add `// ai-disable-next-line no-use-any` + reason).
+- Types/interfaces in the same file as the component when possible.
+- Short functions, single responsibility, **early returns**.
+- Prefer `const handleClick = () => {}`; event handlers use **handle** prefix.
+- State updates: `setState(prev => ...)` (functional form).
+- Naming: `isLoading`, `userList`, `modalRef`, `handleSubmit` (descriptive).
+- No hardcoded secrets; validate external inputs and API responses.
+
+## Components
+
+- Single responsibility; prefer composition over prop drilling (`children` / slots).
+- Props: define interface next to component and destructure in signature.
+- Keep components under ~1500 lines; split when larger.
+
+## File structure (modular)
+
+- **`/common`** — shared components, hooks, layouts, lib, providers, services, stores, types, utils.
+- **`/features`** — feature-specific modules (each with its own components, hooks, etc.).
+- **`/views`** — page-level components; compose from common + features; avoid heavy logic in views.
+- **`/routes`** — router config; routes import views from `/views`.
+- Abstract third-party services behind interfaces; group by **feature**, not by type.
+
+## Styling
+
+- Tailwind classes; avoid custom CSS unless necessary.
+- Prefer **class:** (or conditional-class helpers) over long ternaries in `className`.
+- Mobile-first; CSS variables for theming (Shadcn uses them).
+
+## Testing (Vitest + RTL)
+
+- **Vitest** + **React Testing Library** + **user-event**.
+- Tests next to code: `Component.test.tsx`.
+- Test behavior and user flows, not implementation; AAA pattern.
+- No circular mocking: mock dependencies, not the exact result you assert.
+
+## Accessibility & UX
+
+- Keyboard navigation; semantic HTML; ARIA where needed (`aria-label` on icon buttons, etc.).
+- Color contrast ≥ 4.5:1.
+- Skeletons for async content; error boundaries where appropriate.
+
+## Performance
+
+- Virtualize long lists; lazy-load non-critical assets; `loading="lazy"` and proper `srcSet`/`sizes` for images.
+
+## DRY & SOLID
+
+- Extract repeated logic into hooks, components, or utils (DRY).
+- One responsibility per function/component (SRP).
+- Prefer composition over one big component (OCP).
+
+## Delivering
+
+- Implement fully; no TODOs or placeholders unless agreed.
+- Include required imports; fix lint and TypeScript errors.
+- If something is ambiguous or not doable, say so instead of guessing.

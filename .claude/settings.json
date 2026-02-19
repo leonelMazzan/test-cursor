@@ -1,0 +1,30 @@
+{
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "*",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": ".claude/hooks/firewall.sh"
+                    },
+                    {
+                        "type": "command",
+                        "command": ".claude/hooks/compact.sh"
+                    }
+                ]
+            }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "*",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": ".claude/hooks/post-lint.sh"
+                    }
+                ]
+            }
+        ]
+    }
+}
