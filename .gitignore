@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright MCP (capturas y logs del navegador)
+.playwright-mcp/
+
+# Playwright (tests e informes, si se usan)
+playwright-report/
+playwright/.cache/
+test-results/
+blob-report/
+
+# Cursor (planes y artefactos locales)
+.cursor/plans/
+
+# Env local (secretos)
+.env
+.env.*
+!.env.example
