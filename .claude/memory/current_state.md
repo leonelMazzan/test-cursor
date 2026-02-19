@@ -1,10 +1,17 @@
-# Compact Project State (Thu, Feb 19, 2026  5:26:45 PM)
+# Compact Project State (Thu, Feb 19, 2026  5:37:01 PM)
 Use this file to understand the structure without spending tokens on 'ls -R' or exploration.
 
 ## 1. Key File Map
 .
 ./CLAUDE.md
+./components.json
 ./dashboard.png
+./dist
+./dist/assets
+./dist/assets/index-BUjTnXrQ.css
+./dist/assets/index-RJVuCtoc.js
+./dist/index.html
+./dist/vite.svg
 ./eslint.config.js
 ./index.html
 ./node_modules
@@ -819,30 +826,18 @@ Use this file to understand the structure without spending tokens on 'ls -R' or 
 ./tsconfig.json
 ./tsconfig.node.json
 ./vite.config.ts
+./weather-result.png
 
 ## 2. Recent Changes (Git Dirty State)
- M .env
- M .github/PULL_REQUEST_TEMPLATE_CUSTOM.md
- M package.json
- M src/App.tsx
- M src/index.css
- M tsconfig.app.json
- M vite.config.ts
-?? .claude/memory/
-?? .claude/settings.local.json
-?? .cursor/plans/
-?? .playwright-mcp/
-?? dashboard.png
-?? pnpm-lock.yaml
-?? postcss.config.js
-?? src/common/
-?? src/components/
-?? src/features/
-?? src/routes/
-?? src/views/
-?? tailwind.config.js
+ M .claude/hooks/firewall.sh
+ M .claude/memory/cmd_counter
+ M .claude/memory/current_state.md
+ M .claude/settings.json
+ M .claude/settings.local.json
+?? components.json
 
 ## 3. Last 5 Commits
+2fac5a2 feat(Test-1): Implementación de Auth con IndexedDB (Dexie), Weather Dashboard con OpenWeatherMap y configuración de Tailwind + Shadcn/ui
 62979a0 first commit
 
 ## 4. Active Rules

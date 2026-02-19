@@ -15,7 +15,11 @@
       "mcp__playwright__browser_wait_for",
       "mcp__playwright__browser_type",
       "Bash(cat:*)",
-      "Bash(pnpm run lint)"
+      "Bash(pnpm run lint)",
+      "Bash(bash .claude/hooks/firewall.sh)",
+      "Bash(echo:*)",
+      "Bash(bash .claude/hooks/compact.sh)",
+      "Bash(bash .claude/hooks/post-lint.sh)"
     ]
   }
 }
