@@ -5,16 +5,24 @@ set -e
 TYPE=${1:-feat}
 TICKET=${2:-no-ticket}
 BASE_BRANCH=${3:-dev}
-# Claude-generated description
+# Claude-generated description (used in commit and PR)
 DESCRIPTION=${4:-"Auto-generated changes by Claude Code"}
+# Optional: short slug for branch name (e.g. "auth-weather-dashboard"). If empty, uses readable date.
+BRANCH_SLUG=${5:-}
 
-# Generate unique branch name
+# Generate branch name: descriptive slug or readable date (no Unix timestamp)
 CURRENT_BRANCH=$(git branch --show-current)
-TIMESTAMP=$(date +%s)
-NEW_BRANCH="$TYPE/$TICKET-$TIMESTAMP"
+if [ -n "$BRANCH_SLUG" ]; then
+  # Sanitize: lowercase, spaces/slashes to hyphen, remove invalid chars
+  SAFE_SLUG=$(echo "$BRANCH_SLUG" | tr '[:upper:]' '[:lower:]' | tr ' \t/_' '-' | sed 's/[^a-z0-9-]//g' | sed 's/-\+/-/g;s/^-//;s/-$//' | cut -c1-40)
+  NEW_BRANCH="$TYPE/$TICKET-$SAFE_SLUG"
+else
+  READABLE_DATE=$(date +%Y%m%d-%H%M)
+  NEW_BRANCH="$TYPE/$TICKET-$READABLE_DATE"
+fi
 
 echo "🚀 Starting Smart Git Flow..."
-echo "CONTEXT: $TYPE | $TICKET | $BASE_BRANCH"
+echo "CONTEXT: $TYPE | $TICKET | $BASE_BRANCH | branch: $NEW_BRANCH"
 echo "DESCRIPTION: $DESCRIPTION"
 
 # 1. UPDATE AND CREATE BRANCH

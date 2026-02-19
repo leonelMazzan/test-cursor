@@ -175,11 +175,17 @@ El argumento `<DESCRIPCION>` NO debe ser solo lo que el usuario dictó. DEBES ge
 2. **TU análisis del contexto:** ¿Qué archivos se modificaron? ¿Qué hace el código nuevo?
 3. Si es un `fix`, menciona qué se arregló. Si es `feat`, menciona la funcionalidad.
 
+**Nombre de la rama (importante):**
+El 5º argumento es un **slug corto y descriptivo** para la rama (en inglés, minúsculas, guiones). Así la rama queda tipo `feat/TICKET-auth-weather-dashboard` en lugar de un número o timestamp. Genera el slug a partir del trabajo realizado (ej.: auth login, weather dashboard, fix password validation).
+
 **Sintaxis del comando:**
-`./scripts/git-flow.sh <TIPO> <TICKET> <BASE> "<DESCRIPCION_GENERADA>"`
+`./scripts/git-flow.sh <TIPO> <TICKET> <BASE> "<DESCRIPCION_GENERADA>" "<SLUG_RAMA>"`
 
 **Ejemplos de Comportamiento:**
-- User: "Sube esto, ticket 123" (y cambiaste la lógica de auth) ->
-  `./scripts/git-flow.sh feat 123 dev "Implementación de Guards en NestJS y refactor de JWT strategy"`
-- User: "Arreglado el bug del login, ticket 55" ->
-  `./scripts/git-flow.sh fix 55 dev "Corrección de validación de contraseña en AuthService"`
+- User: "Sube esto, ticket Test-1" (implementaste auth + weather dashboard) →
+  `./scripts/git-flow.sh feat Test-1 dev "Auth with login/register and weather dashboard with geolocation" "auth-weather-dashboard"`
+- User: "Sube cambios, ticket 123" (cambiaste lógica de auth) →
+  `./scripts/git-flow.sh feat 123 dev "Implementación de Guards y refactor de JWT strategy" "auth-guards-jwt"`
+- User: "Arreglado el bug del login, ticket 55" →
+  `./scripts/git-flow.sh fix 55 dev "Corrección de validación de contraseña en AuthService" "login-password-validation"`
+- Si no pasas el 5º argumento, el script usará fecha legible (ej. `feat/123-20260219-1430`) en lugar de timestamp.
