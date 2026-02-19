@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Test artifacts
+.playwright-mcp/
+
+# Claude Code
+.claude/memory/
+.claude/settings.local.json
