@@ -1,19 +1,22 @@
-# Compact Project State (Thu, Feb 19, 2026  5:37:01 PM)
+# Compact Project State (Mon, Feb 23, 2026  5:32:04 PM)
 Use this file to understand the structure without spending tokens on 'ls -R' or exploration.
 
 ## 1. Key File Map
 .
+./@
 ./CLAUDE.md
 ./components.json
-./dashboard.png
+./dashboard-dark-theme.png
+./dashboard-light-theme.png
 ./dist
 ./dist/assets
-./dist/assets/index-BUjTnXrQ.css
-./dist/assets/index-RJVuCtoc.js
+./dist/assets/index-6TgjLX32.js
+./dist/assets/index-cWygLLY4.css
 ./dist/index.html
 ./dist/vite.svg
 ./eslint.config.js
 ./index.html
+./login-page.png
 ./node_modules
 ./node_modules/@babel
 ./node_modules/@babel/code-frame
@@ -61,6 +64,7 @@ Use this file to understand the structure without spending tokens on 'ls -R' or 
 ./node_modules/@jridgewell/sourcemap-codec
 ./node_modules/@jridgewell/trace-mapping
 ./node_modules/@radix-ui
+./node_modules/@radix-ui/react-dropdown-menu
 ./node_modules/@radix-ui/react-label
 ./node_modules/@radix-ui/react-slot
 ./node_modules/@rolldown
@@ -526,6 +530,7 @@ Use this file to understand the structure without spending tokens on 'ls -R' or 
 ./node_modules/natural-compare/index.js
 ./node_modules/natural-compare/package.json
 ./node_modules/natural-compare/README.md
+./node_modules/next-themes
 ./node_modules/node-releases
 ./node_modules/node-releases/data
 ./node_modules/node-releases/LICENSE
@@ -803,10 +808,13 @@ Use this file to understand the structure without spending tokens on 'ls -R' or 
 ./src/assets
 ./src/assets/react.svg
 ./src/common
+./src/common/components
 ./src/common/db
 ./src/common/hooks
 ./src/common/layouts
 ./src/common/lib
+./src/common/providers
+./src/common/stores
 ./src/common/types
 ./src/components
 ./src/components/ui
@@ -826,17 +834,27 @@ Use this file to understand the structure without spending tokens on 'ls -R' or 
 ./tsconfig.json
 ./tsconfig.node.json
 ./vite.config.ts
-./weather-result.png
+./weather-card-dark.png
 
 ## 2. Recent Changes (Git Dirty State)
- M .claude/hooks/firewall.sh
  M .claude/memory/cmd_counter
  M .claude/memory/current_state.md
- M .claude/settings.json
  M .claude/settings.local.json
-?? components.json
+ M index.html
+ M src/App.tsx
+ M src/views/WeatherDashboard.tsx
+?? dashboard-dark-theme.png
+?? dashboard-light-theme.png
+?? login-page.png
+?? src/common/components/
+?? src/common/providers/
+?? src/common/stores/
+?? weather-card-dark.png
 
 ## 3. Last 5 Commits
+88dfcaf change branch
+ce1088f remove playwright
+f92867b fix hooks
 2fac5a2 feat(Test-1): Implementación de Auth con IndexedDB (Dexie), Weather Dashboard con OpenWeatherMap y configuración de Tailwind + Shadcn/ui
 62979a0 first commit
 
@@ -1018,11 +1036,17 @@ El argumento `<DESCRIPCION>` NO debe ser solo lo que el usuario dictó. DEBES ge
 2. **TU análisis del contexto:** ¿Qué archivos se modificaron? ¿Qué hace el código nuevo?
 3. Si es un `fix`, menciona qué se arregló. Si es `feat`, menciona la funcionalidad.
 
+**Nombre de la rama (importante):**
+El 5º argumento es un **slug corto y descriptivo** para la rama (en inglés, minúsculas, guiones). Así la rama queda tipo `feat/TICKET-auth-weather-dashboard` en lugar de un número o timestamp. Genera el slug a partir del trabajo realizado (ej.: auth login, weather dashboard, fix password validation).
+
 **Sintaxis del comando:**
-`./scripts/git-flow.sh <TIPO> <TICKET> <BASE> "<DESCRIPCION_GENERADA>"`
+`./scripts/git-flow.sh <TIPO> <TICKET> <BASE> "<DESCRIPCION_GENERADA>" "<SLUG_RAMA>"`
 
 **Ejemplos de Comportamiento:**
-- User: "Sube esto, ticket 123" (y cambiaste la lógica de auth) ->
-  `./scripts/git-flow.sh feat 123 dev "Implementación de Guards en NestJS y refactor de JWT strategy"`
-- User: "Arreglado el bug del login, ticket 55" ->
-  `./scripts/git-flow.sh fix 55 dev "Corrección de validación de contraseña en AuthService"`
+- User: "Sube esto, ticket Test-1" (implementaste auth + weather dashboard) →
+  `./scripts/git-flow.sh feat Test-1 dev "Auth with login/register and weather dashboard with geolocation" "auth-weather-dashboard"`
+- User: "Sube cambios, ticket 123" (cambiaste lógica de auth) →
+  `./scripts/git-flow.sh feat 123 dev "Implementación de Guards y refactor de JWT strategy" "auth-guards-jwt"`
+- User: "Arreglado el bug del login, ticket 55" →
+  `./scripts/git-flow.sh fix 55 dev "Corrección de validación de contraseña en AuthService" "login-password-validation"`
+- Si no pasas el 5º argumento, el script usará fecha legible (ej. `feat/123-20260219-1430`) en lugar de timestamp.

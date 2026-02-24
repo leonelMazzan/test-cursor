@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import WeatherCard from '@/features/weather/WeatherCard'
 import { fetchWeatherByCoords, fetchWeatherByCity, getCurrentPosition } from '@/features/weather/weatherService'
 import { useAuth } from '@/common/hooks/useAuth'
+import ThemeToggle from '@/common/components/ThemeToggle'
 import type { WeatherData } from '@/common/types/weather'
 
 type GeoStatus = 'idle' | 'loading' | 'denied' | 'success' | 'error'
@@ -64,10 +65,13 @@ const WeatherDashboard = () => {
           <span className="text-sm text-muted-foreground">
             Signed in as <span className="font-medium text-foreground">{user?.email}</span>
           </span>
-          <Button variant="ghost" size="sm" onClick={handleLogout} aria-label="Sign out">
-            <LogOut className="mr-1 h-4 w-4" />
-            Sign out
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button variant="ghost" size="sm" onClick={handleLogout} aria-label="Sign out">
+              <LogOut className="mr-1 h-4 w-4" />
+              Sign out
+            </Button>
+          </div>
         </div>
       </header>
 

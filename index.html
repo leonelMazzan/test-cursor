@@ -5,6 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>frontend-interview</title>
+    <script>
+      // Prevent flash of unstyled content by applying theme class before React renders
+      try {
+        const theme = JSON.parse(localStorage.getItem('theme-storage') || '{}').state?.theme || 'light';
+        document.documentElement.classList.add(theme);
+      } catch (e) {
+        document.documentElement.classList.add('light');
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -19,7 +19,11 @@
       "Bash(bash .claude/hooks/firewall.sh)",
       "Bash(echo:*)",
       "Bash(bash .claude/hooks/compact.sh)",
-      "Bash(bash .claude/hooks/post-lint.sh)"
+      "Bash(bash .claude/hooks/post-lint.sh)",
+      "Bash(pnpm tsc --noEmit)",
+      "Bash(pnpm eslint src/common/stores/useThemeStore.ts src/common/providers/ThemeProvider.tsx src/common/components/ThemeToggle.tsx src/views/WeatherDashboard.tsx src/App.tsx)",
+      "Bash(pnpm run build)",
+      "mcp__playwright__browser_close"
     ]
   }
 }
