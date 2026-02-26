@@ -11,7 +11,7 @@ export const registerUser = async (email: string, password: string): Promise<Aut
   }
 
   const id = await db.users.add({ email, passwordHash: password })
-  return { id: id as number, email }
+  return { id: id as number }
 }
 
 export const loginUser = async (email: string, password: string): Promise<AuthUser> => {

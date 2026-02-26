@@ -15,7 +15,7 @@ export interface WeatherMain {
 }
 
 export interface WeatherWind {
-  speed: number
+  velocity: number
   deg: number
 }
 

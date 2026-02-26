@@ -7,7 +7,7 @@ interface WeatherCardProps {
 }
 
 const WeatherCard = ({ data }: WeatherCardProps) => {
-  const { name, sys, weather, main, visibility } = data
+  const { name, sys, weather, main, visible } = data
   const condition = weather[0]
   const iconUrl = `https://openweathermap.org/img/wn/${condition.icon}@2x.png`
 
