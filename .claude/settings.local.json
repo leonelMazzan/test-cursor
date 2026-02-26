@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scripts/git-flow.sh*)",
+      "Bash(bash scripts/git-flow.sh*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm exec tsc:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_fill_form",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_run_code",
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_type",
+      "Bash(cat:*)",
+      "Bash(pnpm run lint)",
+      "Bash(bash .claude/hooks/firewall.sh)",
+      "Bash(echo:*)",
+      "Bash(bash .claude/hooks/compact.sh)",
+      "Bash(bash .claude/hooks/post-lint.sh)"
+    ]
+  }
+}
